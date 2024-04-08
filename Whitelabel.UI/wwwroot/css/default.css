@@ -1,0 +1,11 @@
+.sec-button {
+    color : var(--app-primary);
+    background-color : var(--app-secondary)
+}
+
+.logo {
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+    background-image: var(--app-logo);
+}

@@ -1,0 +1,5 @@
+:root {
+    --app-primary: #0dbdfd;
+    --app-secondary: #fd0d0d;
+    --app-logo : url('../images/logo1.jpg');
+}

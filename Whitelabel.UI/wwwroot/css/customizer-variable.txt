@@ -1,0 +1,5 @@
+:root {
+    --app-primary: {{ PrimaryColor }};
+    --app-secondary: {{ SecondaryColor }};
+    --app-logo : url('{{ LogoUrl }}');
+}

@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: whitelabel_app
+    image: postgres
+    environment:
+      POSTGRES_USER: mvc
+      POSTGRES_PASSWORD: Mvc123
+      PGDATA: /data/postgres
+    volumes:
+      - postgres-db:/data/postgres
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres-db:
+    driver: local
