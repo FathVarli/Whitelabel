@@ -23,4 +23,8 @@
       <_ContentIncludedByDefault Remove="wwwroot\css\1\variable.css" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Remove="wwwroot\css\1\variable.css" />
+    </ItemGroup>
+
 </Project>

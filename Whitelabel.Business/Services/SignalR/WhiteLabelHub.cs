@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace Whitelabel.Business.Services.SignalR;
 
-public class WhiteLabelHub : Hub
+public class WhiteLabelHub : Hub<IWhiteLabelHubClient>
 {
-    public async Task RefreshPage()
+    public async Task BroadcastMessage()
     {
-        await Clients.All.SendAsync("RefreshPage");
+        await Clients.All.RefreshPage();
     }
 }

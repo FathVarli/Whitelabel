@@ -9,7 +9,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddBusiness(this IServiceCollection services)
     {
-        services.AddSignalR();
+        services.AddSignalR().AddStackExchangeRedis("localhost:6379");
         services.AddSingleton<FluidParser>();
         services.AddScoped<ITemplateBuilder, TemplateBuilder>();
         services.AddScoped<IWhiteLabelService,WhiteLabelService>();

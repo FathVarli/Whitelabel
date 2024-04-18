@@ -1,5 +1,6 @@
 
 
+using Microsoft.AspNetCore.Http.Connections;
 using Whitelabel.Business;
 using Whitelabel.Business.Services.SignalR;
 using Whitelabel.Core.Settings;
@@ -36,16 +37,22 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.UseEndpoints(endpoints =>
+app.MapHub<WhiteLabelHub>("/whiteLabelHub", options =>
 {
-    endpoints.MapHub<WhiteLabelHub>("/whiteLabelHub");
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+    options.Transports =
+        HttpTransportType.WebSockets | 
+        HttpTransportType.LongPolling;
+    options.CloseOnAuthenticationExpiration = true;
+    options.ApplicationMaxBufferSize = 65_536;
+    options.TransportMaxBufferSize = 65_536;
+    options.MinimumProtocolVersion = 0;
+    options.TransportSendTimeout = TimeSpan.FromSeconds(10);
+    options.WebSockets.CloseTimeout = TimeSpan.FromSeconds(3);
+    options.LongPolling.PollTimeout = TimeSpan.FromSeconds(10);
 });
-
-
 
 app.Run();
